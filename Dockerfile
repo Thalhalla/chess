@@ -17,7 +17,11 @@ apt-get install -yqq locales && \
 dpkg-reconfigure --frontend=noninteractive locales && \
 sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
 locale-gen && \
-apt-get install -yqq pychess stockfish && \
+apt-get install -yqq \
+pychess \
+stockfish \
+crafty \
+crafty-books-medium && \
 rm -rf /var/lib/apt/lists/*
 
 # End non-interactive apt
@@ -26,4 +30,4 @@ ENV DEBIAN_FRONTEND=interactive
 USER chess
 WORKDIR /home/chess/
 
-CMD ["pychess"]
+CMD ["/usr/game/pychess"]
